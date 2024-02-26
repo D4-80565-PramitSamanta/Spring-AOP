@@ -26,6 +26,7 @@ public class DemoApplication {
 	private void demoBeforeAdvice(AccountDAO dao, MembershipDAO mao) {
 		// other business logic
 		dao.addAccount();
+		dao.addImp();
 		mao.addAccount();
 	}
 	
