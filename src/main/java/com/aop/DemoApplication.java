@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.aop.dao.AccountDAO;
+
 @SpringBootApplication
 public class DemoApplication {
 
@@ -13,10 +15,16 @@ public class DemoApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner commandLineRunner(String[] args)
+	public CommandLineRunner commandLineRunner(AccountDAO dao)
 	{
 		return runner->{
 			System.out.println("running");
+			demoBeforeAdvice(dao);
 		};
 	}
+	private void demoBeforeAdvice(AccountDAO dao) {
+		// other business logic
+		dao.addAccount();
+	}
+	
 }
